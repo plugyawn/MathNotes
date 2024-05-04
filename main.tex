@@ -1,0 +1,196 @@
+\documentclass[multi, tikz, 11pt]{article}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath} % Include this in your preamble
+\usepackage{tikz}
+\usepackage{multicol}  % For multiple columns
+\usepackage{lmodern} % Load Latin Modern that supports bold small caps
+\usepackage{mdframed}
+\usepackage{amssymb}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+% Redefining the section command to use small caps
+\titleformat{\section}
+  {\normalfont\Large\scshape}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\scshape}{\thesubsection}{1em}{}
+\usepackage{abstract}
+\titleformat{\subsubsection}
+  {\normalfont\scshape}{\thesubsubsection}{1em}{}
+\usepackage{abstract}
+
+% Redefining the abstract name to be in small caps
+% Define the language and its style
+\lstset{language=Python,
+        basicstyle=\ttfamily\small,
+        keywordstyle=\color{blue},
+        stringstyle=\color{red},
+        commentstyle=\color{green},
+        showstringspaces=false,
+        frame=single}
+
+
+% Optional: Define custom theorem styles
+\newtheoremstyle{mystyle}% name
+{3pt}% Space above
+{3pt}% Space below
+{}% Body font
+{}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{.5em}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning 'normal')
+
+% Define custom colors
+\definecolor{theoremcolor}{RGB}{220, 255, 220}
+\definecolor{lemmacolor}{RGB}{255, 255, 220}
+\definecolor{corollarycolor}{RGB}{220, 220, 255}
+\definecolor{propositioncolor}{RGB}{255, 220, 220}
+\definecolor{definitioncolor}{RGB}{220, 255, 255}
+
+% Define custom theorem styles using mdframed
+\mdfdefinestyle{theoremstyle}{%
+    linecolor=green!40!black,
+    backgroundcolor=theoremcolor,
+    linewidth=1pt,
+    frametitlerule=true,
+    frametitlebackgroundcolor=green!40!black,
+    frametitlefont=\color{white}\bfseries,
+    innertopmargin=6pt,
+    innerbottommargin=6pt,
+    innerrightmargin=6pt,
+    innerleftmargin=6pt,
+    roundcorner=4pt
+}
+\declaretheoremstyle[
+    headfont=\bfseries\color{green!40!black},
+    mdframed={style=theoremstyle},
+    headpunct={\\[3pt]},
+    postheadspace={0pt}
+]{thmsty}
+\declaretheorem[style=thmsty, name=Theorem]{theorem}
+
+\usepackage[table]{xcolor} % For cell coloring
+\usepackage[english]{babel}
+\usepackage[section]{placeins}
+\usepackage{algorithm}
+\usepackage{hyperref}
+\usepackage{algorithmic}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{amsmath}
+\usepackage{algorithm} % for pseudocode
+\usepackage{algpseudocode} % for pseudocode
+\newcommand{\algorithmicdeclare}{\\\hspace{-6mm}\textbf{Declare: }}
+\usepackage[utf8]{inputenc}
+\usepackage{johd}
+\usepackage{graphicx}
+\usepackage{booktabs} % For prettier tables
+\usepackage[table]{xcolor} % For cell coloring
+\usepackage{caption}
+\usepackage{tabularx}
+% \usepackage{blocks}
+\usepackage{tikz}
+\usetikzlibrary{positioning, 3d}
+\usepackage{import}
+\subimport{./layers/}{init}
+\usetikzlibrary{positioning}
+
+% Define block styles
+\tikzstyle{conv}=[draw,fill=blue!40,rectangle,minimum height=3em,minimum width=6em]
+\tikzstyle{transformer}=[draw,fill=green!40,rectangle,minimum height=3em,minimum width=6em]
+\tikzstyle{fully_connected}=[draw,fill=red!40,rectangle,minimum height=3em,minimum width=6em]
+\tikzstyle{arrow}=[thick,-\rangle,\rangle=stealth]
+% Define styles for boxes
+\tikzstyle{conv}=[draw,fill=blue!40,rectangle,minimum height=1em,minimum width=4em]
+\tikzstyle{transformer}=[draw,fill=green!40,rectangle,minimum height=1em,minimum width=4em]
+\tikzstyle{fc}=[draw,fill=red!40,rectangle,minimum height=1em,minimum width=4em]
+
+
+\def\ConvColor{rgb:yellow,5;red,2.5;white,5}
+\def\ConvReluColor{rgb:yellow,5;red,5;white,5}
+\def\PoolColor{rgb:red,1;black,0.3}
+\def\DcnvColor{rgb:blue,5;green,2.5;white,5}
+\def\SoftmaxColor{rgb:magenta,5;black,7}
+\def\SumColor{rgb:blue,5;green,15}
+\def\poolsep{1}
+% \usepackage{layers}  % Required for PlotNeuralNet
+\usetikzlibrary{positioning}
+
+\usepackage{tikz}
+\usetikzlibrary{3d}
+\usepackage{titling}
+\newenvironment{tightcenter}{%
+  \setlength\topsep{0pt}
+  \setlength\parskip{0pt}
+  \begin{center}
+}{%
+  \end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%   Title Specs   %%%%%%%%%%%%%%%%%%%%%
+
+\title{\textsc{Real Analysis\vspace{-12pt}}}
+\author{from \textsc{Analysis I \& II} by \textsc{Terence Tao}\\}
+\date{4th \textsc{May}, 2024} %leave blank
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%   Abstract   %%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+    \textsc{Abstract}
+    \vspace{-8pt}
+\end{center}
+\noindent % Ensures there is no indentation at the beginning of the line
+  \begin{center}
+\begin{minipage}{0.8\textwidth}
+These are notes I am curating from my study of Real Analysis over the summer of 2024, starting from \textsc{Analysis I} by the great \textsc{Terence Tao}. The aim is to cover the five chapters of \textsc{Analysis I}, and then move on to \textsc{Analysis II}. These notes will contain only the first part -- namely, \textsc{Natural Numbers}, \textsc{Set Theory}, \textsc{Integers and Rationals}, and \textsc{Real Numbers}, with some theory on \textsc{Functions} and \textsc{Sequences}, especially with regards to proofs on convergence, and so on. 
+
+These are written from a machine learning researcher's point-of-view, so at times I will try to interweave connections that become apparent to me in the process of studying. Of course, in the beginning, these are expected to be few and far in between, but I expect \textsc{Analysis II} to have significant overlap with mainstream machine learning literature.  
+\end{minipage}
+  \end{center}
+
+%%%%%%%%%%%%%%%%%%%   Introduction   %%%%%%%%%%%%%%%%%%%%%
+\section{Natural Numbers}
+It is hard to define natural numbers. One of the ways to do so elegantly is via the cardinality of sets (i.e, $5$ is \textit{defined} as the number of elements in a set of $5$ elements), but this is somewhat circular. A better definition follows via \textsc{Induction}, through \textsc{\color{red}Peano's Axioms}.
+\subsection{Peano's Axioms}
+\textsc{\color{red}Standard Definition of Natural Numbers}.
+\begin{enumerate}
+    \item A \textsc{Natural Number} is \textit{any} element of the set, 
+    \begin{gather}
+        \mathcal{N}:= \{0, 1, 2, 3, 4, \dots\}
+        \end{gather}
+    The set itself is defined by {\color{red}starting from $0$ and counting \textit{forward} indefinitely}. Note that in this definition, \textsc{Natural Numbers} are the same as \textsc{Whole Numbers}. The symbol $:=$ is read as \textsc{Defined to Be}.
+
+    \item $0$ is a \textsc{Natural Number}.
+    \item If $n$ is in $\mathcal{N}$, then $n++$ is also in $\mathcal{N}$.
+    {\color{red}{$n++$ defines the \textsc{Increment} operator.}} So, $O++$ is defined to be $1$, and so on.\vspace{-8pt}
+\subsubsection{Aside: The Wrap-around Issue}\vspace{-8pt}{\color{red} Note that these axioms allow us to ``wrap back'' to $0$, as they exist;} i.e, we must explicitly debar $0$ from arising from any increment operation. {\color{red} Note that this is common in computers, where numerical overflow/underflow causes numbers to wrap around.} This is achieved by \textsc{Axiom 4}.
+
+\item $0$ is not the \textsc{Successor} of any natural number. In other words, we have \textsc{\color{red}$n++ \neq 0 \forall n$}\vspace{-8pt}
+\subsubsection{Aside: The Ceiling Issue}\vspace{-8pt} Note that even these 4 axioms does not get us to our understanding of $\mathcal{N}$ -- we can still have $0++ = 1, 2++ = 3$, but also pathological $3++ = 4 \text{ and } 4++ = 4, 5++ = 4$ and so on. This can cause our system to ``halt" at $4$, and requires us to strictly distinguish between two natural numbers. We do this via \textsc{Axiom 5}.
+
+\item Different natural numbers must have different successors, i.e, if $n$ and $m \in \mathcal{N}$, and $m \neq n$, then $n++ \neq m++$. {\color{red}The converse is also true -- if $n++ \neq m++$ then $n \neq m$.}
+
+\item {\textsc{\color{red}Principle of Mathematical Induction}}: We note \textit{a priori} that \textsc{Mathematical Induction} is very intrinsically linked with the idea of $\mathcal{N}$. We now note that it is also one of the \textsc{Peano Axioms}.
+
+\noindent\textsc{Statement:} Given a property $P(\cdot)$, $P(n)$ evaluates whether or not it is valid for any $n \in \mathcal{N}$. Suppose that $P(0)$ is \textsc{True}; also, whenever $P(n)$ is \textsc{True}, $P(n++)$ is also \textsc{True}. Then, {\color{red} $P(\cdot)$ \textit{is \textsc{True} $\forall n \in \mathcal{N}$}}.
+
+\end{enumerate}
+\noindent\fbox{
+\parbox{\textwidth}{
+        \textsc{\color{red}Proof Template for Induction:} \textit{Prove that a certain property $P(n)$ holds for $\forall n \in \mathcal{N}$}. 
+        \textit{\textbf{Proof}}: \begin{enumerate}
+            \item Verify base case, for n = 0. {\color{red}Prove that $P(0)$ is \textsc{True}.}
+            \item Inductively, suppose for some $n \in \mathcal{N}$, {\color{red}$P(n)$ has already been proved.}
+            \item Prove that $P(n++)$ is \textsc{True}, {\color{red}given that $P(n)$ is \textsc{True}.}
+        \end{enumerate}}}
+
+
+
+\end{document}
